@@ -1,0 +1,5 @@
+package com.example.Cards.dto;
+
+public class BaseEntity {
+
+}

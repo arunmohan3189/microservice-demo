@@ -1,0 +1,28 @@
+package com.example.Loan.controller;
+
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.Loan.dto.LoansDto;
+import com.example.Loan.dto.ResponseDto;
+import com.example.Loan.iservice.ILoanService;
+
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping(path="/api", produces = {MediaType.APPLICATION_JSON_VALUE})
+@AllArgsConstructor
+public class LoanController {
+
+	private ILoanService iLoanService;
+	
+	@PostMapping("/create")
+	public ResponseEntity<ResponseDto> createLoan(@RequestBody LoansDto loansDto){
+		
+	}
+	
+}

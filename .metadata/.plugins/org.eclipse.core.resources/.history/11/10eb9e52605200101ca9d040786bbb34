@@ -1,0 +1,15 @@
+package com.example.Accounts.objectMapper;
+
+import com.example.Accounts.dto.CustomerDto;
+import com.example.Accounts.entity.Customer;
+
+public class CustomerMapper {
+
+	public static Customer mapToCustomer(CustomerDto customerDto, Customer customer) {
+		customer.setMobileNumber(customerDto.getMobileNumber());
+		customer.setEmail(customerDto.getEmail());
+		customer.setName(customerDto.getName());
+		
+		return customer;
+	}
+}

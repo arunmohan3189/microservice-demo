@@ -1,0 +1,17 @@
+package com.example.Loan.iservice;
+
+import com.example.Loan.dto.LoansDto;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
+
+public interface ILoanService {
+
+	void createLoan(String mobileNumber);
+
+	LoansDto fetchLoan(String mobileNumber);
+
+	boolean updateLoanDetails(@Valid LoansDto loansDto);
+
+	boolean deleteLoan(String mobileNumber);
+}

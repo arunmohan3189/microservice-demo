@@ -1,0 +1,5 @@
+package com.example.Cards.audit;
+
+public class AuditAwareImpl {
+
+}

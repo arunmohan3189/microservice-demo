@@ -1,0 +1,7 @@
+package com.example.Cards.iservice.serviceimpl;
+
+import com.example.Cards.iservice.ICardsService;
+
+public class CardsServiceImpl implements ICardsService{
+
+}

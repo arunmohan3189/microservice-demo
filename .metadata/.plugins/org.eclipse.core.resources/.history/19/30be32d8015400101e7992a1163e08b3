@@ -1,0 +1,43 @@
+package com.example.Loan.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.Loan.constants.LoansConstants;
+import com.example.Loan.dto.LoansDto;
+import com.example.Loan.dto.ResponseDto;
+import com.example.Loan.iservice.ILoanService;
+
+import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping(path="/api", produces = {MediaType.APPLICATION_JSON_VALUE})
+@AllArgsConstructor
+@Validated
+public class LoanController {
+
+	private ILoanService iLoanService;
+	
+	@PostMapping("/create")
+	public ResponseEntity<ResponseDto> createLoan(@RequestParam @Pattern(regexp = "^[0-9]{10}$", message = "Mobile number must be 10 digit")
+			String mobileNumber){
+		iLoanService.createLoan(mobileNumber);		
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(LoansConstants.MESSAGE_200, LoansConstants.STATUS_200));
+	}
+
+	@GetMapping("/fetch")
+	public ResponseEntity<LoansDto> getLoanDetail(@RequestParam @Pattern(regexp = "^[0-9]{10}$", message = "mobile number must be 10 digit") 
+	String mobileNumber){
+		
+		ILoanService.fetchLoan(mobileNumber);
+	}
+	
+}

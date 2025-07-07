@@ -1,0 +1,5 @@
+package com.example.Accounts.repository;
+
+public class CustomerRepository {
+
+}

@@ -1,0 +1,48 @@
+package com.example.Cards.exception;
+
+import java.time.LocalDateTime;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.WebRequest;
+
+import com.example.Cards.dto.ErrorResponseDto;
+
+@ControllerAdvice
+public class GlobalException {
+	
+	@ExceptionHandler(ResourceNotFoundException.class)
+	public ResponseEntity<ErrorResponseDto> handleResourceNotFoundException(
+			ResourceNotFoundException ex, WebRequest webRequest){
+		ErrorResponseDto error = new ErrorResponseDto(
+				webRequest.getDescription(false),
+				HttpStatus.BAD_REQUEST,
+				ex.getMessage(),
+				LocalDateTime.now());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+	}
+	
+	@ExceptionHandler(CardsAlreadyExitException.class)
+	public ResponseEntity<ErrorResponseDto> handleCardsAlreadyExitException(
+			CardsAlreadyExitException ex, WebRequest webRequest){
+		ErrorResponseDto error = new ErrorResponseDto(
+				webRequest.getDescription(false),
+				HttpStatus.BAD_REQUEST,
+				ex.getMessage(),
+				LocalDateTime.now());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
+	}
+
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity<ErrorResponseDto> handleCardsAlreadyExitException(
+			Exception ex, WebRequest webRequest){
+		ErrorResponseDto error = new ErrorResponseDto(
+				webRequest.getDescription(false),
+				HttpStatus.INTERNAL_SERVER_ERROR,
+				ex.getMessage(),
+				LocalDateTime.now());
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+	}
+}

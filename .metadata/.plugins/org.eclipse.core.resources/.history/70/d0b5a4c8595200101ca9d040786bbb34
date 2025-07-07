@@ -1,0 +1,15 @@
+package com.example.Accounts.dto;
+
+import java.time.LocalDateTime;
+
+import lombok.Data;
+
+@Data
+public class ErrorResponseDto {
+	
+	private String apiPath;
+	private String statusCode;
+	private String errorMsg;
+	private LocalDateTime errorTime;
+
+}

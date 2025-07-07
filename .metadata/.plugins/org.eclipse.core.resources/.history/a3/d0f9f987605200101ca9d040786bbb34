@@ -1,0 +1,36 @@
+package com.example.Accounts.iservice.serviceimpl;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.example.Accounts.dto.CustomerDto;
+import com.example.Accounts.entity.Customer;
+import com.example.Accounts.exception.CustomerAlreadyExitException;
+import com.example.Accounts.exception.ResourceNotFoundException;
+import com.example.Accounts.iservice.IAccountService;
+import com.example.Accounts.repository.AccountsRepository;
+import com.example.Accounts.repository.CustomerRepository;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class AccountServiceImpl implements IAccountService {
+
+	private AccountsRepository accountsRepository;
+	private CustomerRepository customerRepository;
+	
+	@Override
+	public void createAccount(CustomerDto customerDto) {
+		
+	Optional<Customer> customer =	customerRepository.findByMobileNumber(customerDto.getMobileNumber());
+	if(customer.isPresent()) {
+		
+		throw new CustomerAlreadyExitException("Customer Already Exit for Given Mobile Number : "+customerDto.getMobileNumber());
+	}
+			
+
+	}
+
+}

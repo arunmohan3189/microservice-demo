@@ -1,0 +1,29 @@
+package com.example.Loan.controller;
+
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.Loan.dto.ResponseDto;
+import com.example.Loan.iservice.ILoanService;
+
+import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping(path="/api", produces = {MediaType.APPLICATION_JSON_VALUE})
+@AllArgsConstructor
+@Validated
+public class LoanController {
+
+	private ILoanService iLoanService;
+	
+	public ResponseEntity<ResponseDto> createLoan(@Pattern(regexp = "^[0-9]{10}$", message = "Mobile number must be 10 digit"),
+			String mobileNumber){
+		
+	}
+
+	
+}

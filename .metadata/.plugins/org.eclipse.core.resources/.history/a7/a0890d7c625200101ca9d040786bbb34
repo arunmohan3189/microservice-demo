@@ -1,0 +1,13 @@
+package com.example.Accounts.dto;
+
+import org.springframework.http.HttpStatus;
+
+import lombok.Data;
+
+@Data
+public class ResponseDto {
+
+	private HttpStatus statusCode;
+	
+	private String statusMsg;
+}

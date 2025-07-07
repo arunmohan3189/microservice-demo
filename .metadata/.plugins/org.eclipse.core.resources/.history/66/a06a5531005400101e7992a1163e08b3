@@ -1,0 +1,6 @@
+package com.example.Loan.iservice;
+
+public interface ILoanService {
+
+	void createLoan(String mobileNumber);
+}

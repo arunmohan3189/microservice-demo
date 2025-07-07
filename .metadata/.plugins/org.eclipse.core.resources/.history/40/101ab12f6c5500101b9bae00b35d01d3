@@ -1,0 +1,14 @@
+package com.example.Cards.iservice;
+
+import com.example.Cards.dto.CardsDto;
+
+public interface ICardsService {
+
+	void createCard(String mobileNumber);
+	
+	CardsDto getCardInfo(String mobileNumber);
+	
+	boolean updateCardInfo(String mobileNumber);
+	
+	boolean deleteCardinfo(String mobileNumber);
+}

@@ -1,0 +1,21 @@
+package com.example.Loan.iservice.serviceImpl;
+
+import org.springframework.stereotype.Service;
+
+import com.example.Loan.iservice.ILoanService;
+import com.example.Loan.repository.LoanRepository;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class LoanServiceImpl  implements ILoanService{
+
+	private LoanRepository loanRepository;
+	
+	@Override
+	public void createLoan(String mobileNumber) {
+		
+	}
+
+}

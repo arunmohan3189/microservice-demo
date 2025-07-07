@@ -1,0 +1,9 @@
+package com.example.Loan.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.example.Loan.entity.Loans;
+
+public interface LoanRepository extends JpaRepository<Loans, Long>{
+
+}

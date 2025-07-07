@@ -1,0 +1,32 @@
+package com.example.Cards.dto;
+
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.PositiveOrZero;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor 
+public class CardsDto {
+
+	@NotEmpty(message="Mobile number is Not Empty")
+	@Pattern(regexp = "^[0-9]{10}$", message = "Mobile number must be 10 digit")
+	private String mobileNumber;
+
+	@Pattern(regexp = "^[0-9]{12}$", message = "Card Number must be 12 digit")
+	@NotEmpty
+	private String cardNumber;
+
+	@NotEmpty(message = "Card Type is Mandatory")
+	private String cardType;
+
+	@PositiveOrZero(message="TotalLimit must postive value")
+	private int totalLimit;
+
+	@PositiveOrZero(message = "Amount used must be Positive value")
+	private int amountUsed;
+
+	@PositiveOrZero(message = "Amount Must be positive value")
+	private int availableAmount;
+}

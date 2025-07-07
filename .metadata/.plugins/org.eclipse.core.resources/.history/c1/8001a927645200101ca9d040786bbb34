@@ -1,0 +1,60 @@
+package com.example.Accounts.iservice.serviceimpl;
+
+import java.util.Optional;
+import java.util.Random;
+
+import org.springframework.stereotype.Service;
+
+import com.example.Accounts.constants.AccountConstants;
+import com.example.Accounts.dto.CustomerDto;
+import com.example.Accounts.entity.Account;
+import com.example.Accounts.entity.Customer;
+import com.example.Accounts.exception.CustomerAlreadyExitException;
+import com.example.Accounts.exception.ResourceNotFoundException;
+import com.example.Accounts.iservice.IAccountService;
+import com.example.Accounts.objectMapper.CustomerMapper;
+import com.example.Accounts.repository.AccountsRepository;
+import com.example.Accounts.repository.CustomerRepository;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class AccountServiceImpl implements IAccountService {
+
+	private AccountsRepository accountsRepository;
+	private CustomerRepository customerRepository;
+
+	@Override
+	public void createAccount(CustomerDto customerDto) {
+
+		Optional<Customer> optionalCustomer = customerRepository.findByMobileNumber(customerDto.getMobileNumber());
+		if (optionalCustomer.isPresent()) {
+			throw new CustomerAlreadyExitException(
+					"Customer Already Exit for Given Mobile Number : " + customerDto.getMobileNumber());
+		}
+		Customer customer = CustomerMapper.mapToCustomer(customerDto, new Customer());
+		customerRepository.save(customer);
+		accountsRepository.save(createNewAccount(customer));
+
+	}
+
+	private Account createNewAccount(Customer customer) {
+		Account newAccount = new Account();
+		newAccount.setCustomerId(customer.getCustomerId());
+		long randomAccNumber = 1000000000L + new Random().nextInt(900000000);
+
+		newAccount.setAccountNumber(randomAccNumber);
+		newAccount.setAccountType(AccountConstants.SAVINGS);
+		newAccount.setBranchAddress(AccountConstants.ADDRESS);
+		return newAccount;
+	}
+
+	@Override
+	public CustomerDto fetchCustomerInfo(String mobileNumber) {
+	Customer customer =	customerRepository.findByMobileNumber(mobileNumber).orElseThrow(
+				() -> new ResourceNotFoundException("Customer", mobileNumber, mobileNumber));
+		return null;
+	}
+
+}

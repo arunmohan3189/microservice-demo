@@ -1,0 +1,55 @@
+package com.example.Loan.iservice.serviceImpl;
+
+import java.util.Optional;
+import java.util.Random;
+
+import org.springframework.stereotype.Service;
+
+import com.example.Loan.constants.LoansConstants;
+import com.example.Loan.dto.LoansDto;
+import com.example.Loan.entity.Loans;
+import com.example.Loan.exception.LoanAlreadyExitException;
+import com.example.Loan.exception.ResourceNotFoundException;
+import com.example.Loan.iservice.ILoanService;
+import com.example.Loan.repository.LoanRepository;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class LoanServiceImpl  implements ILoanService{
+
+	private LoanRepository loanRepository;
+	
+	@Override
+	public void createLoan(String mobileNumber) {
+		
+		
+	Optional<Loans>  loan =	loanRepository.findByMobileNumber(mobileNumber);
+	if(loan.isPresent()) {
+		throw new LoanAlreadyExitException("Loan Already Exit for given mobile number = "+mobileNumber);
+	}
+	loanRepository.save(createLoans(mobileNumber));	
+		
+	}
+	
+	public Loans createLoans(String mobileNumber) {
+		Loans newLoan = new Loans();
+        long randomLoanNumber = 100000000000L + new Random().nextInt(900000000);
+        newLoan.setLoanNumber(Long.toString(randomLoanNumber));
+        newLoan.setMobileNumber(mobileNumber);
+        newLoan.setLoanType(LoansConstants.HOME_LOAN);
+        newLoan.setTotalLoan(LoansConstants.NEW_LOAN_LIMIT);
+        newLoan.setAmountPaid(0);
+        newLoan.setOutstandingAmount(LoansConstants.NEW_LOAN_LIMIT);
+        return newLoan;
+	}
+
+	@Override
+	public LoansDto fetchLoan(String mobileNumber) {
+		Optional<Loans>  optionalLoan =	loanRepository.findByMobileNumber(mobileNumber);
+		Loans loan = optionalLoan.orElseThrow(() ->new ResourceNotFoundException("Loan", mobileNumber, mobileNumber));
+		return null;
+	}
+
+}

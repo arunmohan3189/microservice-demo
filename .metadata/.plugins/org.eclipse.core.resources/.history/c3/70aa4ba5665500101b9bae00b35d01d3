@@ -1,0 +1,58 @@
+package com.example.Cards.controller;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.Cards.constants.CardConstant;
+import com.example.Cards.dto.CardsDto;
+import com.example.Cards.dto.ResponseDto;
+import com.example.Cards.iservice.ICardsService;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+
+@RestController
+@RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
+@AllArgsConstructor
+public class CardsController {
+	
+	ICardsService iCardsService;
+	
+	@PostMapping("/create")
+	public ResponseEntity<ResponseDto> createCards(@RequestParam 
+			@Pattern(regexp = "^[0-9]{10}", message="Mobile Number Must be 10 digit") String mobileNumber){
+		
+		return ResponseEntity.status(HttpStatus.OK).body(new ResponseDto(CardConstant.MESSAGE_200, CardConstant.STATUS_200));
+	}
+	
+	@PutMapping("/update")
+	public ResponseEntity<ResponseDto> updateCard(@Valid @RequestBody CardsDto cardsDto){
+		
+		return null;
+	}
+	
+	@GetMapping("/fetch")
+	public ResponseEntity<CardsDto> fetchCardInfo(@RequestParam @Pattern(regexp = "^[0-9]{10}$",
+	message="Mobile Number must be 10 digit") String mobileNumber){
+		
+		return null;
+	}
+	
+	@DeleteMapping("/delete")
+	public ResponseEntity<ResponseDto> deleteCardInfo(@RequestParam @Pattern(regexp = "^[0-9]{10}$",
+	message="Mobile Number must be 10 digit") String mobileNumber){
+		
+		return null;
+	}
+
+}

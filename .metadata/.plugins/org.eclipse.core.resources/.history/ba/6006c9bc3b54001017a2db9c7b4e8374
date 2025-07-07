@@ -1,0 +1,40 @@
+package com.example.Cards.iservice.serviceimpl;
+
+import org.springframework.stereotype.Service;
+
+import com.example.Cards.dto.CardsDto;
+import com.example.Cards.iservice.ICardsService;
+import com.example.Cards.repository.CardsRepository;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class CardsServiceImpl implements ICardsService{
+
+	CardsRepository cardsRepository;
+	@Override
+	public void createCard(String mobileNumber) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public CardsDto getCardInfo(String mobileNumber) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean updateCardInfo(String mobileNumber) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteCardinfo(String mobileNumber) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

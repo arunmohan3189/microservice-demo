@@ -1,0 +1,40 @@
+services:
+  accounts:
+    image: "arun3189/accounts:s4"
+    container_name: accounts-ms
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - arunapp
+
+  loan:
+    image: "arun3189/loan:s4"
+    container_name: loan-ms
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - arunapp
+
+  cards:
+    image: "arun3189/cards:s4"
+    container_name: cards-ms
+    ports:
+      - "9000:9000" #we can mention array of values when we are using - many port we can use
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - arunapp #we can network name for all other service as same
+
+networks:
+  arunapp:
+    driver: "bridge"

@@ -1,0 +1,10 @@
+package com.example.Accounts.iservice;
+
+import com.example.Accounts.dto.CustomerDto;
+
+public interface IAccountService {
+
+	void createAccount(CustomerDto customerDto);
+	
+	CustomerDto fetchCustomerInfo();
+}

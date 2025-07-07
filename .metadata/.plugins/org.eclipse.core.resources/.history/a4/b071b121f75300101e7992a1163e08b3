@@ -1,0 +1,5 @@
+package com.example.Loan.ObjectMapper;
+
+public class LoansMapper {
+
+}

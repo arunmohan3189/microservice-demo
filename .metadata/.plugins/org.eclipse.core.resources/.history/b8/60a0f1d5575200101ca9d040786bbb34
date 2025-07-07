@@ -1,0 +1,13 @@
+package com.example.Accounts.iservice.serviceimpl;
+
+import com.example.Accounts.dto.CustomerDto;
+import com.example.Accounts.iservice.IAccountService;
+
+public class AccountServiceImpl implements IAccountService {
+
+	@Override
+	public void createAccount(CustomerDto customerDto) {
+
+	}
+
+}

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 7 elements from project &apos;Cards&apos;&#x0D;&#x0A;- Original project: &apos;Cards&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     generated-sources&#x0D;&#x0A;     generated-test-sources&#x0D;&#x0A;     maven-archiver&#x0D;&#x0A;     maven-status&#x0D;&#x0A;     surefire-reports&#x0D;&#x0A;     cards-0.0.1-SNAPSHOT.jar&#x0D;&#x0A;     cards-0.0.1-SNAPSHOT.jar.original" description="Delete elements" element1="target/maven-archiver" element2="target/cards-0.0.1-SNAPSHOT.jar" element3="target/generated-test-sources" element4="target/generated-sources" element5="target/surefire-reports" element6="target/maven-status" element7="target/cards-0.0.1-SNAPSHOT.jar.original" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="7" stamp="1751346843242" subPackages="false" version="1.0"/>
+</session>

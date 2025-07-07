@@ -1,0 +1,32 @@
+package com.example.Loan.dto;
+
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import lombok.Data;
+
+@Data
+public class LoansDto {
+	
+	@NotEmpty(message = "mobile Number is mandatory")
+	@Pattern(regexp = "^[9-0]{10}$", message = "PhoneNumber must be 10 digit")
+	private String mobileNumber;
+
+	@NotEmpty(message = "Loan Number is Mandatory")
+	@Pattern(regexp = "^[9-0]{12}$", message="Loan Number must be 12 digit number ")
+	private String loanNumber;
+
+	@NotEmpty(message = "LoanType is Mandatory")
+	private String loanType;
+
+	@Positive(message = "Loan Value start with positive value")
+	private int totalLoan;
+
+	@PositiveOrZero(message="Loan amount must be Positive value")
+	private int amountPaid;
+
+	@PositiveOrZero(message = "OutstandingAmount must be positive value")
+	private int outstandingAmount;
+
+}

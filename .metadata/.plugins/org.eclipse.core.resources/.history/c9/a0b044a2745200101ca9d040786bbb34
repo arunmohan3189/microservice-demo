@@ -1,0 +1,15 @@
+package com.example.Accounts.iservice;
+
+import com.example.Accounts.dto.CustomerDto;
+
+public interface IAccountService {
+
+	void createAccount(CustomerDto customerDto);
+	
+	CustomerDto fetchCustomerInfo(String mobileNumber);
+	
+	boolean updateCustomer(CustomerDto customerDto);
+
+	void deleteAccount(String mobileNumber);
+	
+}
