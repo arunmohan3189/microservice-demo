@@ -1,0 +1,10 @@
+build:
+ version: "2.4"
+
+loan:
+ message: "Welcome to Loan QA API's"
+ contactDetails:
+  name: "loan Qa"
+  email: "loanQa@Email"
+ contactInfo:
+  -200 8000	

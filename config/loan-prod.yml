@@ -1,0 +1,10 @@
+build:
+ version: "2.0"
+
+loan:
+ message: "Welcome to Loans Related Prod API's File Path"
+ contactDetails:
+  name: "Loan Doe _ Prod"
+  email: "loan@email.com"
+ contactInfo:
+  -555 000999

@@ -1,0 +1,14 @@
+#spring.application.name=Accounts
+build:
+ version: "3.0"
+ 
+accounts:
+ message: "Welcome to Accounts related Local API's"
+ contactDetails: 
+  name: "John Doe - Developer"
+  email: "John@gmaol.com"
+ onCallSupport:
+  -(555) 222-123
+ 
+ 
+ 

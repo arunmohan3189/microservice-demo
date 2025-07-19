@@ -1,0 +1,10 @@
+build:
+ version: "1.0"
+ 
+accounts:
+ message: "Welcome to Accounts related Prod API's from File Path"
+ contactDetails: 
+  name: "Vinayaga Doe - Prod"
+  email: "Vinayaga@gmaol.com"
+ onCallSupport:
+  -(777) 222-123
